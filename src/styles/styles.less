@@ -12,9 +12,9 @@
     src: url('../fonts/OpenSans-Bold.ttf');
 }
 
-@color-primary: #0d0;
-@color-mid: #040;
-@color-secondary: #020;
+@color-primary: #fff;
+@color-mid: #888;
+@color-secondary: #000;
 
 html {
 
@@ -26,7 +26,7 @@ html {
         .box-sizing(border-box);
         margin: 0;
         padding: 0;
-        width: 360px;
+        width: 240px;
         border: 2px solid @color-primary;
         color: @color-primary;
         font-family: OpenSans;
@@ -53,7 +53,8 @@ html {
         }
 
         #list-container {
-            height: 420px;
+            padding: 5px;
+            height: 320px;
             background-color: @color-secondary;
 
             &.scrollable {
@@ -70,7 +71,7 @@ html {
             .control {
                 .box-sizing(border-box);
                 float: right;
-                width: 30%;
+                width: 50%;
                 height: 25px;
                 line-height: 22px;
                 text-align: center;

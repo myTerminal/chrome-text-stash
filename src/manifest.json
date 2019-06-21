@@ -15,6 +15,7 @@
   "author": "Mohammed Ismail Ansari <team.terminal@gmail.com>",
   "permissions": [
     "activeTab",
-    "contextMenus"
+    "contextMenus",
+    "storage"
   ]
 }
