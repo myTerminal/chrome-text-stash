@@ -22,7 +22,10 @@
   ],
   "author": "Mohammed Ismail Ansari <team.terminal@gmail.com>",
   "license": "GPL-3.0",
-  "dependencies": {},
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "5.8.2",
+    "chrome-extension-helper": "0.10.0"
+  },
   "devDependencies": {
     "babel-core": "6.26.3",
     "babel-eslint": "10.0.1",

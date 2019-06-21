@@ -1,4 +1,5 @@
 @import '../../node_modules/effortless-css/less/all.less';
+@import '../../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 
 @font-face {
     font-family: OpenSans;
@@ -11,6 +12,10 @@
     src: url('../fonts/OpenSans-Bold.ttf');
 }
 
+@color-primary: #0d0;
+@color-mid: #040;
+@color-secondary: #020;
+
 html {
 
     .clearfix {
@@ -22,13 +27,75 @@ html {
         margin: 0;
         padding: 0;
         width: 360px;
+        border: 2px solid @color-primary;
+        color: @color-primary;
         font-family: OpenSans;
 
         #title {
+            height: 25px;
+            line-height: 25px;
             text-align: center;
+            background-color: @color-primary;
+            color: @color-secondary;
             font-weight: bold;
             text-transform: uppercase;
             font-size: 1.2em;
+
+            #source-link {
+                color: @color-secondary;
+                text-decoration: none;
+                .opacity(0.5);
+
+                &:hover {
+                    .opacity(1);
+                }
+            }
+        }
+
+        #list-container {
+            height: 420px;
+            background-color: @color-secondary;
+
+            &.scrollable {
+                overflow-y: scroll;
+            }
+        }
+
+        #controls {
+            .box-sizing(border-box);
+            height: 35px;
+            padding: 5px;
+            background-color: @color-secondary;
+
+            .control {
+                .box-sizing(border-box);
+                float: right;
+                width: 30%;
+                height: 25px;
+                line-height: 22px;
+                text-align: center;
+                margin-left: 5px;
+                padding: 0 5px;
+                text-transform: uppercase;
+                border: 1px solid @color-primary;
+                .round-borders(3px);
+                cursor: pointer;
+
+                &.left {
+                    float: left;
+                    margin-left: 0;
+                    margin-right: 5px;
+                }
+
+                &.mini {
+                    width: auto;
+                }
+
+                &:hover,
+                &.active {
+                    background-color: @color-mid;
+                }
+            }
         }
     }
 }

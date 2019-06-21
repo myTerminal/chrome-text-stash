@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "chrome-text-stash",
-  "short_name": "chrome-text-stash",
+  "name": "Chrome Text Stash",
+  "short_name": "Chrome Text Stash",
   "version": "#version#",
   "description": "#description#",
   "icons": {
@@ -14,6 +14,7 @@
   },
   "author": "Mohammed Ismail Ansari <team.terminal@gmail.com>",
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "contextMenus"
   ]
 }
