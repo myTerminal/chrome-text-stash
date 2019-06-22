@@ -12,19 +12,6 @@ storage.initializeStorage();
 // Reference for listContainerDom, shared across background and foreground
 let listContainerDom;
 
-// Create text-stash property to hold the stash
-const stash = storage.createSyncedProperty(
-    'text-stash',
-    [[]],
-    entries => {
-        if (listContainerDom) {
-            listContainerDom.innerHTML = entries
-                .map(e => `<div>${e}</div>`)
-                .join('');
-        }
-    }
-);
-
 // Function to create a context-menu item to provide an option to add selected text to stash
 const createContextMenuItems = () => {
     chrome.contextMenus.create(
@@ -47,14 +34,22 @@ const addSelectionToStash = event => {
     });
 };
 
-// Event handler to clear stash
-const clearStash = () => {
-    stash.set(
-        [],
-        () => {
+// Function to load stash contents on UI
+const loadStashContentsOnInterface = entries => {
+    if (listContainerDom) {
+        if (entries.length) {
+            listContainerDom.innerHTML = entries
+                .map(e => `<div>${e}</div>`)
+                .join('');
+        } else {
             displayEmptyStashMessage();
         }
-    );
+    }
+};
+
+// Event handler to clear stash
+const clearStash = () => {
+    stash.set([]);
 };
 
 // Function to display an "empty stash" message
@@ -71,8 +66,8 @@ const start = () => {
     // Set the title
     titleDom.innerText = `Chrome Text Stash (${packageDetails.version})${process.env.NODE_ENV !== 'development' ? ' [DEBUG]' : ''}`;
 
-    // Start with an empty stash
-    displayEmptyStashMessage();
+    // Load stash contents on UI
+    stash.get(loadStashContentsOnInterface);
 
     // Bind event to 'Clear' button
     document.querySelector('#clear').onclick = clearStash;
@@ -83,3 +78,10 @@ window.addEventListener('load', start);
 
 // Generate context menu items
 createContextMenuItems();
+
+// Create text-stash property to hold the stash
+const stash = storage.createSyncedProperty(
+    'text-stash',
+    [[]],
+    loadStashContentsOnInterface
+);
