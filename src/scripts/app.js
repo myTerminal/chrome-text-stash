@@ -67,7 +67,7 @@ const start = () => {
     titleDom.innerText = `Chrome Text Stash (${packageDetails.version})${process.env.NODE_ENV !== 'development' ? ' [DEBUG]' : ''}`;
 
     // Load stash contents on UI
-    stash.get(loadStashContentsOnInterface);
+    stash.read();
 
     // Bind event to 'Clear' button
     document.querySelector('#clear').onclick = clearStash;
