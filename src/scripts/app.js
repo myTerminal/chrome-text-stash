@@ -14,13 +14,17 @@ let listContainerDom;
 
 // Function to create a context-menu item to provide an option to add selected text to stash
 const createContextMenuItems = () => {
-    chrome.contextMenus.create(
-        {
-            type: 'normal',
-            id: '1',
-            title: 'Add to stash',
-            contexts: ['selection'],
-            onclick: addSelectionToStash
+    chrome.contextMenus.removeAll(
+        () => {
+            chrome.contextMenus.create(
+                {
+                    type: 'normal',
+                    id: '1',
+                    title: 'Add to stash',
+                    contexts: ['selection'],
+                    onclick: addSelectionToStash
+                }
+            );
         }
     );
 };
