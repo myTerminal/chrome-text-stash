@@ -38,7 +38,8 @@ const html = new HtmlWebpackPlugin({
 module.exports = {
     mode: 'development',
     entry: {
-        app: './' + sourceDir + '/scripts/app.js'
+        app: './' + sourceDir + '/scripts/app.js',
+        events: './' + sourceDir + '/scripts/events.js'
     },
     module: {
         rules: [

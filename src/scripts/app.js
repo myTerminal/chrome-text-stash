@@ -12,35 +12,6 @@ storage.initializeStorage();
 // Reference for listContainerDom, shared across background and foreground
 let listContainerDom;
 
-// Function to create a context-menu item to provide an option to add selected text to stash
-const createContextMenuItems = () => {
-    chrome.contextMenus.removeAll(
-        () => {
-            chrome.contextMenus.create(
-                {
-                    type: 'normal',
-                    id: '1',
-                    title: 'Add to stash',
-                    contexts: ['selection'],
-                    onclick: addSelectionToStash
-                }
-            );
-        }
-    );
-};
-
-// Event handler to add selected text to stash
-const addSelectionToStash = event => {
-    const { selectionText } = event;
-
-    stash.get(s => {
-        stash.set(s.concat([{
-            id: (new Date()).getTime(),
-            text: selectionText
-        }]));
-    });
-};
-
 // Function to update stash contents on UI
 const updateStashContentsOnInterface = entries => {
     if (listContainerDom) {
@@ -159,9 +130,6 @@ const start = () => {
 
 // Generate the pop-up UI
 window.addEventListener('load', start);
-
-// Generate context menu items
-createContextMenuItems();
 
 // Create text-stash property to hold the stash
 const stash = storage.createSyncedProperty(
