@@ -34,21 +34,29 @@ const addSelectionToStash = event => {
     const { selectionText } = event;
 
     stash.get(s => {
-        stash.set(s.concat([selectionText]));
+        stash.set(s.concat([{
+            id: (new Date()).getTime(),
+            text: selectionText
+        }]));
     });
 };
 
-// Function to load stash contents on UI
-const loadStashContentsOnInterface = entries => {
+// Function to update stash contents on UI
+const updateStashContentsOnInterface = entries => {
     if (listContainerDom) {
         if (entries.length) {
-            listContainerDom.innerHTML = entries
-                .map(e => `<div>${e}</div>`)
-                .join('');
+            loadStashContentsOnInterface(entries);
         } else {
             displayEmptyStashMessage();
         }
     }
+};
+
+// Function to load stash contents on interface
+const loadStashContentsOnInterface = entries => {
+    listContainerDom.innerHTML = entries
+        .map(e => `<div data-id="${e.id}">${e.text}</div>`)
+        .join('');
 };
 
 // Event handler to clear stash
@@ -68,7 +76,7 @@ const start = () => {
     listContainerDom = document.querySelector('#list-container');
 
     // Set the title
-    titleDom.innerText = `Chrome Text Stash (${packageDetails.version})${process.env.NODE_ENV !== 'development' ? ' [DEBUG]' : ''}`;
+    titleDom.innerText = `Chrome Text Stash (${packageDetails.version})${process.env.NODE_ENV === 'development' ? ' [DEBUG]' : ''}`;
 
     // Load stash contents on UI
     stash.read();
@@ -87,5 +95,5 @@ createContextMenuItems();
 const stash = storage.createSyncedProperty(
     'text-stash',
     [[]],
-    loadStashContentsOnInterface
+    updateStashContentsOnInterface
 );
