@@ -54,9 +54,81 @@ const updateStashContentsOnInterface = entries => {
 
 // Function to load stash contents on interface
 const loadStashContentsOnInterface = entries => {
-    listContainerDom.innerHTML = entries
-        .map(e => `<div data-id="${e.id}">${e.text}</div>`)
-        .join('');
+    // Empty the list DOM
+    listContainerDom.innerHTML = '';
+
+    // Add all items from collection
+    entries.forEach(
+        entry => {
+            // Create an item DOM element
+            const element = document.createElement('div');
+
+            // Set properties for the item element
+            element.className = 'stash-item';
+            element.setAttribute('id', entry.id);
+
+            // Create a DOM element for text
+            const textContent = document.createElement('div');
+
+            // Set properties for the text element
+            textContent.className = 'stash-text';
+            textContent.innerText = entry.text;
+
+            // Create a DOM element for selection action
+            const selectButton = document.createElement('span');
+
+            // Set properties for the 'select' item
+            selectButton.className = 'stash-select far fa-copy';
+            selectButton.onclick = handleSelectOnStashItem;
+
+            // Create a DOM element for deletion action
+            const deleteButton = document.createElement('span');
+
+            // Set properties for the 'delete' button
+            deleteButton.className = 'stash-delete fas fa-times';
+            deleteButton.onclick = handleDeleteOnStashItem;
+
+            // Append elements to the item
+            element.append(textContent);
+            element.append(selectButton);
+            element.append(deleteButton);
+
+            // Append the item to the list
+            listContainerDom.append(element);
+        }
+    );
+};
+
+// Event handler to select a stash item
+const handleSelectOnStashItem = event => {
+    const source = event.srcElement,
+        itemDom = source.parentElement,
+        itemId = itemDom.getAttribute('id');
+
+    // Read items from the list
+    stash.get(s => {
+        // Find the selected item
+        const selectedItem = s.filter(i => i.id.toString() === itemId)[0];
+
+        // Extract text to work with
+        if (selectedItem) {
+            console.log(selectedItem.text);
+        }
+    });
+};
+
+// Event handler to delete a stash item
+const handleDeleteOnStashItem = event => {
+    const source = event.srcElement,
+        itemDom = source.parentElement,
+        itemId = itemDom.getAttribute('id');
+
+    // Remove item from the stash
+    stash.get(s => {
+        stash.set(
+            s.filter(i => i.id.toString() !== itemId)
+        );
+    });
 };
 
 // Event handler to clear stash
