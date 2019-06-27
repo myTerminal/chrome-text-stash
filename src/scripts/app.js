@@ -50,14 +50,14 @@ const loadStashContentsOnInterface = entries => {
             const selectButton = document.createElement('span');
 
             // Set properties for the 'select' item
-            selectButton.className = 'stash-select far fa-copy';
+            selectButton.className = 'stash-item-control stash-select far fa-copy';
             selectButton.onclick = handleSelectOnStashItem;
 
             // Create a DOM element for deletion action
             const deleteButton = document.createElement('span');
 
             // Set properties for the 'delete' button
-            deleteButton.className = 'stash-delete fas fa-times';
+            deleteButton.className = 'stash-item-control stash-delete fas fa-times';
             deleteButton.onclick = handleDeleteOnStashItem;
 
             // Append elements to the item
