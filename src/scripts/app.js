@@ -1,13 +1,14 @@
-/* global require alert chrome window document process */
+/* global require window document process */
 
 import { storage } from 'chrome-extension-helper';
+import { reportError } from './common';
 
 import '../styles/styles.less';
 
 const packageDetails = require('../../package.json');
 
 // Intialize chrome storage
-storage.initializeStorage(alert); // TODO: Replace `alert` with something better
+storage.initializeStorage(reportError);
 
 // Reference for listContainerDom, shared across background and foreground
 let listContainerDom;

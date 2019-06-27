@@ -20,6 +20,10 @@
   "permissions": [
     "activeTab",
     "contextMenus",
-    "storage"
+    "storage",
+    "notifications"
+  ],
+  "web_accessible_resources": [
+    "icons/icon128.png"
   ]
 }
