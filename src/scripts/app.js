@@ -84,7 +84,7 @@ const handleSelectOnStashItem = event => {
 
         // Extract text to work with
         if (selectedItem) {
-            console.log(selectedItem.text);
+            copyTextToClipboard(selectedItem.text);
         }
     });
 };
@@ -101,6 +101,16 @@ const handleDeleteOnStashItem = event => {
             s.filter(i => i.id.toString() !== itemId)
         );
     });
+};
+
+const copyTextToClipboard = text => {
+    const holder = document.getElementById('clipboard-text-holder');
+
+    holder.value = text;
+    holder.focus();
+    holder.select();
+    document.execCommand('copy');
+    holder.value = '';
 };
 
 // Event handler to clear stash

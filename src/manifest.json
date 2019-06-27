@@ -21,6 +21,7 @@
     "activeTab",
     "contextMenus",
     "storage",
+    "clipboardWrite",
     "notifications"
   ],
   "web_accessible_resources": [
