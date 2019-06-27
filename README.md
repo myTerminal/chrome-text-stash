@@ -12,8 +12,11 @@ A Google Chrome extension to carry text across websites and computers [coming so
 
 ## Features
 
-(Coming soon)
+* Provides a convenient way to store small pieces of text to carry across web pages and computers as well
+* More to come...
 
 ## To-do
 
-(Coming soon)
+* Implement more ways of storing and retrieving text
+* Provide a display of space used and space left in the stash
+* Definitely improve visuals
