@@ -1,4 +1,4 @@
-/* global chrome document */
+/* global chrome */
 
 import { storage } from 'chrome-extension-helper';
 
