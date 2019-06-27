@@ -1,9 +1,9 @@
-/* global chrome */
+/* global alert chrome */
 
 import { storage } from 'chrome-extension-helper';
 
 // Intialize chrome storage
-storage.initializeStorage();
+storage.initializeStorage(alert); // TODO: Replace `alert` with something better
 
 // Function to create a context-menu item to provide an option to add selected text to stash
 const createContextMenuItems = () => {
