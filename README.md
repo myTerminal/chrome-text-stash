@@ -8,7 +8,11 @@
 [![peer Dependency Status](https://david-dm.org/myTerminal/chrome-text-stash/peer-status.svg)](https://david-dm.org/myTerminal/chrome-text-stash#info=peerDependencies)  
 [![License](https://img.shields.io/badge/LICENSE-GPL%20v3.0-blue.svg)](https://www.gnu.org/licenses/gpl.html)
 
-A Google Chrome extension to carry text across websites and computers [coming soon]
+A Google Chrome extension to carry text across websites and computers
+
+You can install it from the [Chrome Web Store](https://chrome.google.com/webstore/detail/chrome-text-stash/nllbcacohcpnfenocdamobclmglkbafe).
+
+[![Screenshot](images/screenshot.png)](https://chrome.google.com/webstore/detail/chrome-text-stash/nllbcacohcpnfenocdamobclmglkbafe)
 
 ## Features
 
