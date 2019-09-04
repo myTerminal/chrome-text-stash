@@ -6,9 +6,11 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const commonConfig = require('./webpack.common.js');
 
-module.exports = WebpackMerge(commonConfig, {
-    mode: 'production',
-    plugins: [
-        new UglifyJSPlugin()
-    ]
-});
+module.exports = WebpackMerge(
+    commonConfig, {
+        mode: 'production',
+        plugins: [
+            new UglifyJSPlugin()
+        ]
+    }
+);
